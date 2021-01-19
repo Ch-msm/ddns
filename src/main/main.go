@@ -27,7 +27,7 @@ var (
 func init() {
 	ePath, err := os.Executable()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	currentPath = filepath.Dir(ePath)
 	logFile, err := os.OpenFile(filepath.Join(currentPath, "dns.log"), os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
@@ -158,10 +158,10 @@ func jsonToMap(j string) map[string]interface{} {
 /*
 map转json
 */
-func mapToJson(m map[string]interface{}) string {
-	str, _ := json.Marshal(m)
-	return string(str)
-}
+//func mapToJson(m map[string]interface{}) string {
+//	str, _ := json.Marshal(m)
+//	return string(str)
+//}
 
 func post(url string, data map[string]interface{}) map[string]interface{} {
 	data["login_token"] = loginToken
